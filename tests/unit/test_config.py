@@ -1,3 +1,5 @@
+import os
+
 import pytest
 
 from iduconfig.config import Config
@@ -25,3 +27,12 @@ def test_set_env(prepare_env):
     key = "TEST1"
     prepare_env.set(key, "new val")
     assert prepare_env.get(key) == "new val"
+
+
+def test_load_non_existing_env():
+    os.environ["APP_ENV"] = ""
+    with pytest.raises(ValueError) as e:
+        _ = Config()
+    os.environ["APP_ENV"] = "non_existing"
+    with pytest.raises(FileNotFoundError) as e:
+        _ = Config()
