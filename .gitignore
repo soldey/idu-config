@@ -1,0 +1,7 @@
+dist
+htmlcov
+.coverage
+.env*
+.pytest_cache
+.idea
+poetry.lock
