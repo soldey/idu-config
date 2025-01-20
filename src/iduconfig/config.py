@@ -24,7 +24,6 @@ class Config:
         """
 
         tmp = os.getenv(key)
-        print(tmp)
         if tmp:
             return tmp
         raise ValueError(f"No such env: {key}")
